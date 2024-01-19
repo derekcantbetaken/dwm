@@ -1,0 +1,27 @@
+--- dwm.c	2023-04-30
++++ dwm.c	2023-04-30
+@@ -641,7 +639,6 @@ createmon(void)
+ 	m->nmaster = nmaster;
+ 	m->showbar = showbar;
+ 	m->topbar = topbar;
+-	m->gappx = gappx;
+ 	m->lt[0] = &layouts[0];
+ 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
+ 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
+@@ -1509,16 +1506,6 @@ setfullscreen(Client *c, int fullscreen)
+ }
+ 
+ void
+-setgaps(const Arg *arg)
+-{
+-	if ((arg->i == 0) || (selmon->gappx + arg->i < 0))
+-		selmon->gappx = 0;
+-	else
+-		selmon->gappx += arg->i;
+-	arrange(selmon);
+-}
+-
+-void
+ setlayout(const Arg *arg)
+ {
+ 	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
